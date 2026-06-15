@@ -68,8 +68,8 @@ export default function ContactPage() {
     setError(null);
     try {
       await sendContactEmail({
-        from_name:  form.name,
-        from_email: form.email,
+        name:       form.name,
+        work_email: form.email,
         company:    form.company,
         message:    form.message,
       });

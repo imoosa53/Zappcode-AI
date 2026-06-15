@@ -10,19 +10,20 @@ export function initEmailJS() {
 }
 
 export interface ContactParams {
-    from_name: string;
-    from_email: string;
+    name: string;
+    work_email: string;
     company: string;
-    message: string;
-    phone?: string;
+    phone_number?: string;
+    message?: string;
 }
 
 export async function sendContactEmail(params: ContactParams) {
     return emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-        from_name:  params.from_name,
-        from_email: params.from_email,
-        company:    params.company,
-        message:    params.message,
-        phone:      params.phone ?? '',
+        name:         params.name,
+        work_email:   params.work_email,
+        company:      params.company,
+        phone_number: params.phone_number ?? '',
+        message:      params.message ?? '',
+        time:         new Date().toLocaleString(),
     });
 }

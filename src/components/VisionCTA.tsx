@@ -27,11 +27,10 @@ export default function VisionCTA() {
         setError(null);
         try {
             await sendContactEmail({
-                from_name:  form.name,
-                from_email: form.email,
-                company:    form.company,
-                phone:      form.phone,
-                message:    'Demo request',
+                name:         form.name,
+                work_email:   form.email,
+                company:      form.company,
+                phone_number: form.phone,
             });
             setSubmitted(true);
             setForm({ name: '', company: '', email: '', phone: '' });
