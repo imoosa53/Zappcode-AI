@@ -35,8 +35,10 @@ export default function VisionCTA() {
             });
             setSubmitted(true);
             setForm({ name: '', company: '', email: '', phone: '' });
-        } catch {
-            setError('Something went wrong. Please try again.');
+        } catch (err: unknown) {
+            console.error('[EmailJS error]', err);
+            const msg = (err as { text?: string })?.text ?? 'Something went wrong. Please try again.';
+            setError(msg);
         } finally {
             setSending(false);
         }

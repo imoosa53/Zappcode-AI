@@ -75,8 +75,10 @@ export default function ContactPage() {
       });
       setSubmitted(true);
       setForm(EMPTY);
-    } catch {
-      setError('Something went wrong. Please try again or email us directly.');
+    } catch (err: unknown) {
+      console.error('[EmailJS error]', err);
+      const msg = (err as { text?: string })?.text ?? 'Something went wrong. Please try again or email us directly.';
+      setError(msg);
     } finally {
       setSending(false);
     }
