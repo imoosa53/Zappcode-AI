@@ -36,7 +36,7 @@ export default function ROIMetrics() {
 
     return (
         <section ref={ref} id="roi" className="section-dark noise-overlay" style={{ padding: 'clamp(80px, 12vw, 160px) 0' }}>
-            <div className="max-w-[1400px] mx-auto" style={{ padding: '0 clamp(24px, 5vw, 64px)' }}>
+            <div className="max-w-350 mx-auto" style={{ padding: '0 clamp(24px, 5vw, 64px)' }}>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
                     {/* Left — Image */}
                     <motion.div
@@ -44,8 +44,8 @@ export default function ROIMetrics() {
                         animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
                         transition={{ duration: 1, delay: 0.2, ease }}
                     >
-                        <div className="img-showcase-dark" style={{ animation: 'float 7s ease-in-out infinite', maxHeight: '420px' }}>
-                            <img src={roiImg} alt="ROI Analytics Visualization" loading="lazy" decoding="async" style={{ maxHeight: '420px', objectFit: 'cover', objectPosition: 'center' }} />
+                        <div className="img-showcase-dark" style={{ animation: 'float 7s ease-in-out infinite', maxHeight: '420px', minHeight: 'clamp(200px, 35vw, 420px)' }}>
+                            <img src={roiImg} alt="ROI Analytics Visualization" loading="lazy" decoding="async" style={{ maxHeight: '420px', minHeight: 'clamp(200px, 35vw, 420px)', objectFit: 'cover', objectPosition: 'center' }} />
                         </div>
                     </motion.div>
 
@@ -104,11 +104,11 @@ function MetricRow({ m, index, inView }: { m: (typeof metrics)[number]; index: n
             transition={{ duration: 0.5, delay: 0.3 + index * 0.1, ease: [0.23, 1, 0.32, 1] }}
             className="glass-card" style={{ padding: '20px 24px' }}
         >
-            <div className="flex items-center gap-4">
-                <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: '28px', color: m.color, lineHeight: 1, minWidth: '80px' }}>
+            <div className="flex items-start sm:items-center gap-4">
+                <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: 'clamp(22px, 4vw, 28px)', color: m.color, lineHeight: 1, minWidth: '72px', flexShrink: 0 }}>
                     {m.prefix}{display}{m.suffix}
                 </div>
-                <div style={{ flex: 1 }}>
+                <div style={{ flex: 1, minWidth: 0 }}>
                     <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '10px', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#94a3b8', marginBottom: '2px' }}>{m.label}</p>
                     <p style={{ fontSize: '12px', color: '#475569', margin: 0 }}>{m.sub}</p>
                 </div>

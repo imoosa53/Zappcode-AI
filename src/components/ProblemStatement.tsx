@@ -39,7 +39,7 @@ export default function ProblemStatement() {
 
     return (
         <section ref={ref} id="problem" className="section-light" style={{ padding: 'clamp(80px, 12vw, 160px) 0' }}>
-            <div className="max-w-[1400px] mx-auto" style={{ padding: '0 clamp(24px, 5vw, 64px)' }}>
+            <div className="max-w-350 mx-auto" style={{ padding: '0 clamp(24px, 5vw, 64px)' }}>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
                     {/* Left — Content */}
                     <div>

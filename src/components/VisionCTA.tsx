@@ -19,7 +19,7 @@ export default function VisionCTA() {
 
     return (
         <section ref={ref} id="contact" className="section-light" style={{ padding: 'clamp(48px, 8vw, 80px) 0 0' }}>
-            <div className="max-w-[1400px] mx-auto" style={{ padding: '0 clamp(24px, 5vw, 64px)' }}>
+            <div className="max-w-350 mx-auto" style={{ padding: '0 clamp(24px, 5vw, 64px)' }}>
                 {/* Dark container */}
                 <motion.div initial={{ opacity: 0, y: 60 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 1, ease }}
                     className="dark-container noise-overlay" style={{ padding: 'clamp(48px, 7vw, 88px) clamp(32px, 5vw, 64px)', position: 'relative' }}
@@ -30,7 +30,7 @@ export default function VisionCTA() {
                         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(15,23,42,0.97), rgba(15,23,42,0.92))' }} />
                     </div>
 
-                    <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-24 items-center">
+                    <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-24 items-center">
                         {/* Left */}
                         <div>
                             <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.1, ease }}>
@@ -75,7 +75,7 @@ export default function VisionCTA() {
 
                         {/* Right — Form */}
                         <motion.div initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.3, ease }}
-                            className="glass-card" style={{ padding: '40px', boxShadow: '0 24px 64px rgba(0,0,0,0.3)' }}
+                            className="glass-card" style={{ padding: 'clamp(24px, 4vw, 40px)', boxShadow: '0 24px 64px rgba(0,0,0,0.3)' }}
                         >
                             <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: '24px', color: '#f1f5f9', marginBottom: '4px' }}>Get Started</h3>
                             <p style={{ fontSize: '13px', color: '#475569', marginBottom: '28px', lineHeight: 1.5 }}>

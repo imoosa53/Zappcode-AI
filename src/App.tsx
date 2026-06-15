@@ -150,7 +150,7 @@ function CTADivider({ headline, sub, btnText, btnHref, icon: Icon, variant = 'gr
                 filter: 'blur(40px)', pointerEvents: 'none',
             }} />
 
-            <div className="relative z-10 max-w-225 mx-auto flex flex-col md:flex-row items-center gap-6 md:gap-12">
+            <div className="relative z-10 max-w-350 mx-auto flex flex-col md:flex-row items-center gap-6 md:gap-12">
                 {/* Icon */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}

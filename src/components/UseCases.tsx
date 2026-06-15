@@ -26,7 +26,7 @@ export default function UseCases() {
 
     return (
         <section ref={ref} id="use-cases" className="section-light" style={{ padding: 'clamp(80px, 12vw, 160px) 0' }}>
-            <div className="max-w-[1400px] mx-auto" style={{ padding: '0 clamp(24px, 5vw, 64px)' }}>
+            <div className="max-w-350 mx-auto" style={{ padding: '0 clamp(24px, 5vw, 64px)' }}>
                 {/* Header */}
                 <div className="text-center" style={{ marginBottom: '24px' }}>
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, ease }}>
@@ -75,7 +75,7 @@ export default function UseCases() {
                         exit={{ y: -20, opacity: 0 }}
                         transition={{ duration: 0.35, ease }}
                     >
-                        <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: '20px' }}>
+                        <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: 'clamp(16px, 2.5vw, 20px)' }}>
                             {/* Image */}
                             <div className="img-showcase" style={{ height: 'clamp(280px, 30vw, 420px)' }}>
                                 <img src={current.image} alt={current.label} loading="lazy" decoding="async" />

@@ -324,7 +324,7 @@ export default function HowItWorksLight() {
       <div style={{ maxWidth: 1400, margin: '0 auto', padding: '0 clamp(24px, 5vw, 64px)', position: 'relative', zIndex: 1 }}>
 
         {/* ─── HEADER + IMAGE GRID ─── */}
-        <div className="howit-header-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(32px, 5vw, 64px)', alignItems: 'center', marginBottom: 'clamp(64px, 9vw, 110px)' }}>
+        <div className="howit-header-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'clamp(32px, 5vw, 64px)', alignItems: 'center', marginBottom: 'clamp(64px, 9vw, 110px)' }}>
 
           {/* LEFT — Content */}
           <div>

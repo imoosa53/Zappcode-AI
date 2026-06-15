@@ -18,7 +18,7 @@ export default function SocialProof() {
 
     return (
         <section ref={ref} id="social-proof" className="section-light-alt" style={{ padding: 'clamp(80px, 12vw, 160px) 0' }}>
-            <div className="max-w-[1400px] mx-auto" style={{ padding: '0 clamp(24px, 5vw, 64px)' }}>
+            <div className="max-w-350 mx-auto" style={{ padding: '0 clamp(24px, 5vw, 64px)' }}>
                 {/* Header */}
                 <div className="text-center" style={{ marginBottom: '24px' }}>
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, ease }}>
@@ -33,16 +33,19 @@ export default function SocialProof() {
 
                 {/* Logo strip */}
                 <motion.div initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}} transition={{ delay: 0.3 }}
-                    className="flex flex-wrap justify-center items-center" style={{ marginBottom: '56px' }}
+                    className="flex flex-wrap justify-center items-center"
+                    style={{ marginBottom: '56px', gap: '10px 0', rowGap: '10px' }}
                 >
                     {logoStrip.map((logo, i) => (
                         <div key={logo} className="flex items-center">
-                            {i > 0 && <div style={{ width: '1px', height: '16px', background: 'rgba(0,0,0,0.08)', margin: '0 clamp(12px, 2.5vw, 28px)' }} />}
-                            <span style={{
-                                fontFamily: "'JetBrains Mono', monospace", fontSize: '11px',
-                                letterSpacing: '0.1em', textTransform: 'uppercase', color: '#94a3b8',
-                                transition: 'color 0.3s ease', cursor: 'default',
-                            }}
+                            {i > 0 && <div className="hidden sm:block" style={{ width: '1px', height: '16px', background: 'rgba(0,0,0,0.08)', margin: '0 clamp(12px, 2.5vw, 28px)' }} />}
+                            <span
+                                className={i > 0 ? 'sm:pl-0 pl-4' : ''}
+                                style={{
+                                    fontFamily: "'JetBrains Mono', monospace", fontSize: '11px',
+                                    letterSpacing: '0.1em', textTransform: 'uppercase', color: '#94a3b8',
+                                    transition: 'color 0.3s ease', cursor: 'default',
+                                }}
                                 onMouseEnter={(e) => { e.currentTarget.style.color = '#2563EB'; }}
                                 onMouseLeave={(e) => { e.currentTarget.style.color = '#94a3b8'; }}
                             >{logo}</span>

@@ -245,6 +245,20 @@
 @keyframes ring-spin { to { transform: rotate(360deg); } }
 @keyframes ring-pulse { 0%, 100% { opacity: 0.15; } 50% { opacity: 0.35; } }
 
+/* ===== MOBILE RESPONSIVE OVERRIDES ===== */
+@media (max-width: 479px) {
+  /* Tighten dark-container padding on very small screens */
+  .dark-container { border-radius: 20px; }
+  /* Ensure glass-card doesn't clip inputs */
+  .glass-card { border-radius: 18px; }
+  /* Smaller card radii for phone-sized viewports */
+  .card-light { border-radius: 18px; }
+  /* Prevent float animation from causing layout shifts on mobile */
+  @media (prefers-reduced-motion: reduce) {
+    .img-showcase, .img-showcase-dark { animation: none !important; }
+  }
+}
+
 /* ===== TYPEWRITER CURSOR BLINK ===== */
 @keyframes blink {
   0%, 100% { opacity: 1; }

@@ -52,7 +52,7 @@ export default function AboutUs() {
 
   return (
     <section id="about" className="section-light" style={{ padding: 'clamp(80px, 10vw, 140px) 0' }}>
-      <div className="max-w-[1400px] mx-auto" style={{ padding: '0 clamp(24px, 5vw, 64px)' }}>
+      <div className="max-w-350 mx-auto" style={{ padding: '0 clamp(24px, 5vw, 64px)' }}>
 
         {/* ── Header ─────────────────────────────────────────────────────── */}
         <div ref={headerRef} style={{ maxWidth: '760px', marginBottom: 'clamp(56px, 7vw, 88px)' }}>

@@ -246,7 +246,7 @@ export default function Footer() {
           </div>
 
           {/* Nav columns */}
-          <div className="flex gap-10 min-[860px]:gap-[72px] pt-2">
+          <div className="flex flex-wrap gap-8 min-[860px]:gap-18 pt-2">
             {navColumns.map(({ title, links }) => (
               <div key={title}>
                 <p className="font-caveat text-2xl font-semibold italic text-gray-400 mb-[18px]">

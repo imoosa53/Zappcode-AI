@@ -220,7 +220,7 @@ export default function AgentsPage() {
           background: 'radial-gradient(circle, rgba(236,72,153,0.05) 0%, transparent 70%)',
         }} />
 
-        <div className="max-w-[1400px] mx-auto relative" style={{ zIndex: 1 }}>
+        <div className="max-w-350 mx-auto relative" style={{ zIndex: 1 }}>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
@@ -317,7 +317,7 @@ export default function AgentsPage() {
           padding: 'clamp(64px, 8vw, 96px) clamp(24px, 5vw, 64px)',
         }}
       >
-        <div className="max-w-[1400px] mx-auto" ref={gridRef}>
+        <div className="max-w-350 mx-auto" ref={gridRef}>
           {/* Section label */}
           <div style={{ marginBottom: '40px', display: 'flex', alignItems: 'center', gap: '16px' }}>
             <div style={{ height: 1, flex: 1, background: 'rgba(255,255,255,0.05)' }} />
@@ -359,7 +359,7 @@ export default function AgentsPage() {
         borderTop: '1px solid rgba(255,255,255,0.04)',
         borderBottom: '1px solid rgba(255,255,255,0.04)',
       }}>
-        <div className="max-w-[1400px] mx-auto">
+        <div className="max-w-350 mx-auto">
           <div style={{ textAlign: 'center', marginBottom: '56px' }}>
             <span className="eyebrow eyebrow-dark" style={{ marginBottom: 20, display: 'block' }}>
               Closed-loop system
@@ -435,7 +435,7 @@ export default function AgentsPage() {
           background: 'radial-gradient(circle, rgba(6,182,212,0.07) 0%, transparent 70%)',
         }} />
 
-        <div className="max-w-[720px] mx-auto" style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
+        <div className="max-w-180 mx-auto" style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={ctaInView ? { opacity: 1, y: 0 } : {}}

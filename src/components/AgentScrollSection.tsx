@@ -570,7 +570,7 @@ export default function AgentScrollSection() {
           </div>
 
           {/* ── Sticky header strip ── */}
-          <div className="absolute top-0 left-0 right-0 z-20 flex items-center gap-3 px-10 py-5"
+          <div className="absolute top-0 left-0 right-0 z-20 flex items-center gap-3 px-5 lg:px-10 py-5"
             style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
             <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#444' }}>
               Agent Intelligence Team

@@ -22,7 +22,7 @@ export default function Integration() {
 
     return (
         <section ref={ref} id="integration" className="section-light-alt" style={{ padding: 'clamp(80px, 12vw, 160px) 0' }}>
-            <div className="max-w-[1400px] mx-auto" style={{ padding: '0 clamp(24px, 5vw, 64px)' }}>
+            <div className="max-w-350 mx-auto" style={{ padding: '0 clamp(24px, 5vw, 64px)' }}>
 
                 {/* ─── TWO-COLUMN GRID ─── */}
                 <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: 'clamp(32px, 5vw, 64px)', alignItems: 'center' }}>
@@ -50,7 +50,7 @@ export default function Integration() {
                         >Works with your existing stack. Live in under 48 hours.</motion.p>
 
                         {/* Flow diagram */}
-                        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr]" style={{ gap: 'clamp(16px, 3vw, 32px)', alignItems: 'center' }}>
+                        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr]" style={{ gap: 'clamp(20px, 3vw, 32px)', alignItems: 'center' }}>
                             {/* Sources */}
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                                 <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#94a3b8', marginBottom: '6px', textAlign: 'center' }}>Your Systems</p>

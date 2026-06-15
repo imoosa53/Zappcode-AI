@@ -18,7 +18,7 @@ export default function BrandStory() {
 
     return (
         <section ref={ref} id="story" className="section-light" style={{ padding: 'clamp(80px, 12vw, 160px) 0' }}>
-            <div className="max-w-[1400px] mx-auto" style={{ padding: '0 clamp(24px, 5vw, 64px)' }}>
+            <div className="max-w-350 mx-auto" style={{ padding: '0 clamp(24px, 5vw, 64px)' }}>
 
                 {/* ─── TWO-COLUMN GRID ─── */}
                 <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: 'clamp(32px, 5vw, 64px)', alignItems: 'center' }}>
@@ -26,7 +26,7 @@ export default function BrandStory() {
                     {/* LEFT — Image */}
                     <motion.div initial={{ opacity: 0, x: -40, scale: 0.96 }} animate={inView ? { opacity: 1, x: 0, scale: 1 } : {}} transition={{ duration: 1, ease }}>
                         <div className="img-showcase" style={{ overflow: 'hidden', borderRadius: '28px' }}>
-                            <img src={agentsImg} alt="9 AI Agent Constellation" loading="lazy" decoding="async" style={{ objectPosition: 'center', width: '100%', height: '100%', objectFit: 'cover', minHeight: 480 }} />
+                            <img src={agentsImg} alt="9 AI Agent Constellation" loading="lazy" decoding="async" style={{ objectPosition: 'center', width: '100%', height: '100%', objectFit: 'cover', minHeight: 'clamp(220px, 38vw, 480px)' }} />
                         </div>
                     </motion.div>
 

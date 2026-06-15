@@ -28,7 +28,7 @@ export default function Hero() {
 
       {/* Hero Content — bottom anchored */}
       <div className="flex-1" />
-      <div className="relative z-20 w-full max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12 pb-14 sm:pb-16 lg:pb-20">
+      <div className="relative z-20 w-full max-w-360 mx-auto px-5 sm:px-8 lg:px-12 pb-14 sm:pb-16 lg:pb-20">
         {/* Label */}
         <p
           style={{

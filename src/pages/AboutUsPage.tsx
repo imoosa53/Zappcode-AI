@@ -80,7 +80,7 @@ export default function AboutUsPage() {
           background: 'radial-gradient(ellipse 60% 50% at 20% 60%, rgba(37,99,235,0.18) 0%, transparent 70%)',
         }} />
 
-        <div className="max-w-[1400px] mx-auto relative z-10">
+        <div className="max-w-350 mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
@@ -128,7 +128,7 @@ export default function AboutUsPage() {
 
       {/* ── Values ─────────────────────────────────────────────────────── */}
       <section className="section-light" style={{ padding: 'clamp(64px, 9vw, 112px) clamp(24px, 5vw, 64px)' }}>
-        <div className="max-w-[1400px] mx-auto">
+        <div className="max-w-350 mx-auto">
           <div ref={valuesRef}>
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -181,7 +181,7 @@ export default function AboutUsPage() {
 
       {/* ── Stats ──────────────────────────────────────────────────────── */}
       <section className="section-light-alt" style={{ padding: 'clamp(64px, 9vw, 112px) clamp(24px, 5vw, 64px)' }}>
-        <div className="max-w-[1400px] mx-auto" ref={statsRef}>
+        <div className="max-w-350 mx-auto" ref={statsRef}>
           <motion.div
             className="dark-container noise-overlay"
             initial={{ opacity: 0, y: 32 }}
@@ -221,7 +221,7 @@ export default function AboutUsPage() {
 
       {/* ── Timeline ───────────────────────────────────────────────────── */}
       <section className="section-light" style={{ padding: 'clamp(64px, 9vw, 112px) clamp(24px, 5vw, 64px)' }}>
-        <div className="max-w-[1400px] mx-auto" ref={timelineRef}>
+        <div className="max-w-350 mx-auto" ref={timelineRef}>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={timelineInView ? { opacity: 1, y: 0 } : {}}
@@ -278,7 +278,7 @@ export default function AboutUsPage() {
 
       {/* ── Team ───────────────────────────────────────────────────────── */}
       <section className="section-light-alt" style={{ padding: 'clamp(64px, 9vw, 112px) clamp(24px, 5vw, 64px)' }}>
-        <div className="max-w-[1400px] mx-auto" ref={teamRef}>
+        <div className="max-w-350 mx-auto" ref={teamRef}>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={teamInView ? { opacity: 1, y: 0 } : {}}
