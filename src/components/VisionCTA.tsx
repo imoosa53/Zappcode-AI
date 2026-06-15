@@ -1,7 +1,8 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { ArrowRight, Play, Shield, Clock, Sparkles } from 'lucide-react';
+import { ArrowRight, Play, Shield, Clock, Sparkles, Loader2, AlertCircle, CheckCircle } from 'lucide-react';
 import dashboardImg from '../assets/sections/dashboard.png';
+import { sendContactEmail } from '../lib/emailjs';
 
 const ease: [number, number, number, number] = [0.23, 1, 0.32, 1];
 
@@ -16,6 +17,30 @@ export default function VisionCTA() {
     const inView = useInView(ref, { once: true, margin: '-80px' });
     const [form, setForm] = useState({ name: '', company: '', email: '', phone: '' });
     const [focusedField, setFocusedField] = useState<string | null>(null);
+    const [sending,   setSending]   = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [error,     setError]     = useState<string | null>(null);
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setSending(true);
+        setError(null);
+        try {
+            await sendContactEmail({
+                from_name:  form.name,
+                from_email: form.email,
+                company:    form.company,
+                phone:      form.phone,
+                message:    'Demo request',
+            });
+            setSubmitted(true);
+            setForm({ name: '', company: '', email: '', phone: '' });
+        } catch {
+            setError('Something went wrong. Please try again.');
+        } finally {
+            setSending(false);
+        }
+    };
 
     return (
         <section ref={ref} id="contact" className="section-light" style={{ padding: 'clamp(48px, 8vw, 80px) 0 0' }}>
@@ -81,38 +106,66 @@ export default function VisionCTA() {
                             <p style={{ fontSize: '13px', color: '#475569', marginBottom: '28px', lineHeight: 1.5 }}>
                                 Fill in your details and we&apos;ll reach out within 24 hours.
                             </p>
-                            <form onSubmit={(e) => e.preventDefault()} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                                {[
-                                    { name: 'name', placeholder: 'Your Name', type: 'text' },
-                                    { name: 'company', placeholder: 'Company', type: 'text' },
-                                    { name: 'email', placeholder: 'Work Email', type: 'email' },
-                                    { name: 'phone', placeholder: 'Phone Number', type: 'tel' },
-                                ].map((field) => (
-                                    <input key={field.name} name={field.name} type={field.type}
-                                        placeholder={field.placeholder}
-                                        value={form[field.name as keyof typeof form]}
-                                        onChange={(e) => setForm({ ...form, [e.target.name]: e.target.value })}
-                                        aria-label={field.placeholder}
-                                        className="w-full outline-none"
-                                        style={{
-                                            padding: '14px 20px', borderRadius: '14px',
-                                            background: focusedField === field.name ? 'rgba(99,102,241,0.06)' : 'rgba(255,255,255,0.03)',
-                                            border: `1px solid ${focusedField === field.name ? 'rgba(99,102,241,0.4)' : 'rgba(255,255,255,0.06)'}`,
-                                            color: '#e2e8f0', fontFamily: "'Instrument Sans', sans-serif", fontSize: '14px',
-                                            transition: 'all 0.4s ease',
-                                            boxShadow: focusedField === field.name ? '0 0 0 3px rgba(99,102,241,0.1)' : 'none',
-                                        }}
-                                        onFocus={() => setFocusedField(field.name)}
-                                        onBlur={() => setFocusedField(null)}
-                                    />
-                                ))}
-                                <button type="submit" className="btn-primary w-full" style={{ marginTop: '8px', borderRadius: '14px' }}>
-                                    Request Your Demo <ArrowRight size={14} />
-                                </button>
-                                <p style={{ textAlign: 'center', fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: '#475569', letterSpacing: '0.08em', marginTop: '4px' }}>
-                                    No commitment · Response within 24 hours
-                                </p>
-                            </form>
+                            {submitted ? (
+                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '14px', padding: '24px 0', textAlign: 'center' }}>
+                                    <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                        <CheckCircle size={26} color="#22C55E" />
+                                    </div>
+                                    <h4 style={{ fontFamily: "'DM Serif Display', serif", fontSize: '1.5rem', color: '#f1f5f9', margin: 0 }}>You're on the list!</h4>
+                                    <p style={{ fontSize: '13px', color: '#64748b', margin: 0, lineHeight: 1.6 }}>
+                                        We'll reach out within 24 hours to schedule your demo.
+                                    </p>
+                                    <button onClick={() => setSubmitted(false)}
+                                        style={{ fontSize: '12px', color: '#60a5fa', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}>
+                                        Submit another request
+                                    </button>
+                                </div>
+                            ) : (
+                                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                                    {[
+                                        { name: 'name', placeholder: 'Your Name', type: 'text' },
+                                        { name: 'company', placeholder: 'Company', type: 'text' },
+                                        { name: 'email', placeholder: 'Work Email', type: 'email' },
+                                        { name: 'phone', placeholder: 'Phone Number', type: 'tel' },
+                                    ].map((field) => (
+                                        <input key={field.name} name={field.name} type={field.type}
+                                            placeholder={field.placeholder}
+                                            value={form[field.name as keyof typeof form]}
+                                            onChange={(e) => setForm({ ...form, [e.target.name]: e.target.value })}
+                                            aria-label={field.placeholder}
+                                            className="w-full outline-none"
+                                            required disabled={sending}
+                                            style={{
+                                                padding: '14px 20px', borderRadius: '14px',
+                                                background: focusedField === field.name ? 'rgba(99,102,241,0.06)' : 'rgba(255,255,255,0.03)',
+                                                border: `1px solid ${focusedField === field.name ? 'rgba(99,102,241,0.4)' : 'rgba(255,255,255,0.06)'}`,
+                                                color: '#e2e8f0', fontFamily: "'Instrument Sans', sans-serif", fontSize: '14px',
+                                                transition: 'all 0.4s ease',
+                                                boxShadow: focusedField === field.name ? '0 0 0 3px rgba(99,102,241,0.1)' : 'none',
+                                                boxSizing: 'border-box',
+                                            }}
+                                            onFocus={() => setFocusedField(field.name)}
+                                            onBlur={() => setFocusedField(null)}
+                                        />
+                                    ))}
+                                    {error && (
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 14px', borderRadius: '10px', background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.2)' }}>
+                                            <AlertCircle size={14} color="#EF4444" style={{ flexShrink: 0 }} />
+                                            <span style={{ fontFamily: "'Instrument Sans', sans-serif", fontSize: '12px', color: '#FCA5A5' }}>{error}</span>
+                                        </div>
+                                    )}
+                                    <button type="submit" className="btn-primary w-full" disabled={sending}
+                                        style={{ marginTop: '8px', borderRadius: '14px', justifyContent: 'center', opacity: sending ? 0.7 : 1 }}>
+                                        {sending
+                                            ? <><Loader2 size={14} className="animate-spin" /> Sending…</>
+                                            : <>Request Your Demo <ArrowRight size={14} /></>
+                                        }
+                                    </button>
+                                    <p style={{ textAlign: 'center', fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: '#475569', letterSpacing: '0.08em', marginTop: '4px' }}>
+                                        No commitment · Response within 24 hours
+                                    </p>
+                                </form>
+                            )}
                         </motion.div>
                     </div>
                 </motion.div>
